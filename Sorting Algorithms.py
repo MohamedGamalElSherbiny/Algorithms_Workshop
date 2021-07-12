@@ -46,17 +46,41 @@ def selection_sort(array):
 
     Parameters:
     ----------
-    lst :          list
+    array :        list
                    List of numbers
 
     Returns:
     --------
-    lst :          list
+    array :        list
                    Sorted list
     """
     for i in range(len(array)):
         element = find_minimum(array, i)
         swap(array, element, i)
+    return array
+
+# Insertion Sort
+def insertion_sort(array):
+    """
+    Sort an array of numbers using Insertion Sort Algorithm
+
+    Parameters:
+    ----------
+    array :        list
+                   List of numbers
+
+    Returns:
+    --------
+    array :        list
+                   Sorted list
+    """
+    for i in range(1, len(array)):
+        key = array[i]
+        j = i - 1
+        while j >= 0 and key < array[j]:
+            array[j + 1] = array[j]
+            j -= 1
+        array[j + 1] = key
     return array
 
 #  Merge Sort Algorithm
@@ -168,8 +192,10 @@ def merge_sort_while(array):
 
 lst = [3, 8, 1, 0, 4, 9, 7]
 lst_copy = lst.copy()
-print("My original array was:\n{}\n\nAnd after Selection sorting is:\n{}\n".format(lst, selection_sort(lst_copy)))
+print("My original array was:\n{}\n\nAnd after Selection sort is:\n{}\n".format(lst, selection_sort(lst_copy)))
 lst_copy = lst.copy()
-print("My original array was:\n{}\n\nAnd after Merge sorting is:\n{}\n".format(lst, merge_sort(lst_copy)))
+print("My original array was:\n{}\n\nAnd after Insertion sort is:\n{}\n".format(lst, insertion_sort(lst_copy)))
 lst_copy = lst.copy()
-print("My original array was:\n{}\n\nAnd after Merge sorting using While is:\n{}\n".format(lst, merge_sort_while(lst_copy)))
+print("My original array was:\n{}\n\nAnd after Merge sort is:\n{}\n".format(lst, merge_sort(lst_copy)))
+lst_copy = lst.copy()
+print("My original array was:\n{}\n\nAnd after Merge sort using While is:\n{}\n".format(lst, merge_sort_while(lst_copy)))
